@@ -1,6 +1,8 @@
 
 import java.io.IOException;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 
 public class GetCep {
@@ -19,7 +21,7 @@ public class GetCep {
 
     public static void main(String[] args) throws IOException {
         GetCep example = new GetCep();
-        String response = example.run("https://raw.github.com/square/okhttp/master/README.md");
+        String response = example.run("http://api.zippopotam.us/BR/90480-190");
         System.out.println(response);
     }
 }
