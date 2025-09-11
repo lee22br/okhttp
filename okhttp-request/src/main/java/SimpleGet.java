@@ -7,14 +7,14 @@ public class SimpleGet {
 
     final OkHttpClient client = new OkHttpClient();
 
-    String runSync(String url) throws IOException {
+    void runSync(String url) throws IOException {
         Request request = new Request.Builder()
                 .url(url)
                 .build();
 
         try (Response response = client.newCall(request).execute()) {
             System.out.println("Response: "+ response.body().string());
-            return "";
+
         }
     }
 
