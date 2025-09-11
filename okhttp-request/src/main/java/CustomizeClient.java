@@ -28,6 +28,7 @@ public class CustomizeClient {
         OkHttpClient client2 = client.newBuilder()
                 .readTimeout(3000, TimeUnit.MILLISECONDS)
                 .build();
+
         try (Response response = client2.newCall(request).execute()) {
             System.out.println("Response 2 succeeded: " + response);
         } catch (IOException e) {

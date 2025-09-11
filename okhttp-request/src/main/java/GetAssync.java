@@ -1,21 +1,9 @@
+import okhttp3.*;
 
 import java.io.IOException;
 
-import okhttp3.*;
-
-public class GetCep {
-
+public class GetAssync {
     final OkHttpClient client = new OkHttpClient();
-
-    String runSync(String url) throws IOException {
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
-
-        try (Response response = client.newCall(request).execute()) {
-            return response.body().string();
-        }
-    }
 
     void runAsync(String url) throws IOException {
         Request request = new Request.Builder()
@@ -41,10 +29,17 @@ public class GetCep {
             }
         });
     }
-    public static void main(String[] args) throws IOException {
-        GetCep example = new GetCep();
-//        String response = example.runSync("https://viacep.com.br/ws/90550052/json/");
-//        System.out.println(response);
-        example.runAsync("https://viacep.com.br/ws/90550052/json/");
+
+    public static void main(String[] args) throws IOException, InterruptedException {
+        GetAssync example = new GetAssync();
+        example.runAsync("http://httpbin.org/delay/2");
+        System.out.println("Main thread still running");
+        String aux = ".";
+        for (int i = 0; i < 10; i++){
+            aux = aux.concat(".");
+            System.out.println(aux+i);
+            Thread.sleep(500);
+        }
+        System.exit(0);
     }
 }
